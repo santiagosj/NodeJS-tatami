@@ -1,0 +1,2 @@
+Linea 1 Hi! desde archivo1 creado con fs 
+Linea 2 goodbye! desde archivo1 creado con fs
