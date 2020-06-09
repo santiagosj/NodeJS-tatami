@@ -14,9 +14,9 @@ const mime = {
 
 const servidor = http.createServer((req, res)=>{
   let objetourl = url.parse(req.url);
-  let path = 'public' +objetourl.pathname;
-  if(path=='public/'){
-    path='public/index.html';
+  let path = 'unidad_1/ejercicio-8/public' +objetourl.pathname;
+  if(path=='unidad_1/ejercicio-8/public/'){
+    path='unidad_1/ejercicio-8/public/index.html';
   }
   encaminar(req,res,path);
 });
