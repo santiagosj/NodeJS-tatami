@@ -1,22 +1,21 @@
-//SERVIDOR PAGINAS ESTATICAS
-const http=require('http');
-const url=require('url');
-const fs=require('fs');
+var http=require('http');
+var url=require('url');
+var fs=require('fs');
 
-//console.log(process.argv)
+var mime=require('mime');
 
-const server = http.createServer((req, res)=>{
+var server = http.createServer((req, res)=>{
 
-    const objUrl = url.parse(req.url, true);  
+    var objUrl = url.parse(req.url, true);  
     console.log(objUrl.pathname);  
 
     try{
         
-       const objUrl = url.parse(req.url)
+       var objUrl = url.parse(req.url)
       
-       const path = 'unidad_2/ejercicio-10/static' + objUrl.pathname
+       var path = 'unidad_2/ejercicio-16/static' + objUrl.pathname
        
-       if(path === 'unidad_2/ejercicio-10/static/') path = 'unidad_2/ejercicio-10/static/index.html';
+       if(path === 'unidad_2/ejercicio-16/static/') path = 'unidad_2/ejercicio-16/static/index.html';
 
       //DEBBUGIN
        console.log( path ) //logs "static/index.html"
@@ -31,7 +30,9 @@ const server = http.createServer((req, res)=>{
                    return res.end();
                }else{
                   // console.log(data)
-                   res.writeHead(200,{'Content-Type': 'text/html'})
+                   var type = mime.getType(path)
+                   console.log(type)
+                   res.writeHead(200,{'Content-Type': type})
                    res.write(data)
                    return res.end();
                }
@@ -49,7 +50,7 @@ const server = http.createServer((req, res)=>{
     }
 })
 
-const port = 8888 || process.env.PORT
+var port = 8888 || process.env.PORT
 
 server.listen(port)
 
