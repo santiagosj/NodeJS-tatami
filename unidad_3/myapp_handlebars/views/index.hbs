@@ -1,0 +1,14 @@
+<h1>{{titulo}}</h1>
+<table border="1">
+    <tr>
+        <td>Código</td> <td>Descripción</td> <td>Precio</td>
+    </tr>
+    {{#each articulos}}
+      <tr>
+          <td>{{codigo}}</td> <td>{{descripcion}}</td> <td>{{precio}}</td>
+      </tr>
+    {{/each}}
+</table>
+
+<p>Descuento el día lunes: {{descuento.lunes}} </p>
+<p>Descuento el día lunes: {{descuento.martes}} </p>

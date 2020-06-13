@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= titulo
+  table(border=1) 
+    tr
+      td Código 
+      td Descripción
+      td Precio
+      each articulo, i in articulos 
+         tr 
+           td #{articulo.codigo}
+           td #{articulo.descripcion}
+           td #{articulo.precio}
+  p Descuento el día lunes: #{descuento.lunes}
+  p Descuento el día martes: #{descuento.martes}      
