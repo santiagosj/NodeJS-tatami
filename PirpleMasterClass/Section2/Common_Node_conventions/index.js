@@ -9,6 +9,9 @@
  // Dependencies
  var mathLib = require('./lib/math')
  var jokesLib = require('./lib/jokes')
+ /**
+  * @todo make this shit work
+  */
  //var newJokeLib = require('jokes')
 
  // app object
