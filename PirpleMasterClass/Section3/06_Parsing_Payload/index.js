@@ -8,6 +8,7 @@
  var { StringDecoder } = require('string_decoder')
  var url = require('url')
 
+// ===============================================================
  
 // Configure the server to respond to all requests with a string
  var server = http.createServer(function(req, res){
@@ -25,6 +26,9 @@
     // Get the HTTP method
     var httpMethod = req.method.toLowerCase();
 
+    //Get the headers as an object
+    var headers = req.headers;
+
     var decoder = new StringDecoder('utf-8');
     var buffer = '';
     req.on('data',function(data){
@@ -34,7 +38,7 @@
         buffer += decoder.end()
 
          // Send the response
-    res.end('Parsing payload(data)\n');
+    res.end('Parsing payload(data)');
 
     // Log the request/response
     console.log('This is the payload(data): '+ buffer)
@@ -43,6 +47,10 @@
 
  })
 
+ // ===============================================================
+
  server.listen(3000,function(){
     console.log('The server is up and running now');
  })
+
+
