@@ -8,6 +8,8 @@
  var url = require('url')
  
 // Configure the server to respond to all requests with a string
+// =====================================================================
+
  var server = http.createServer(function(req, res){
 
     // parse the url
@@ -30,6 +32,8 @@
     console.log(`Request received on path: ${trimmedPath} \nmethod: ${httpMethod} \nquery string: ${JSON.stringify(queryStringObject)}`)
 
  })
+
+ // =====================================================================
 
  server.listen(3000,function(){
     console.log('The server is up and running now');
