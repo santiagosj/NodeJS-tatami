@@ -66,18 +66,30 @@ function getAuthorById(id, callback) {
     callback(null, author)
 }
 
-getBookById(1, (err, book) => {
-    if (err) {
-        return console.log(err.message);
-    }
+// getBookById(1, (err, book) => {
+//     if (err) {
+//         return console.log(err.message);
+//     }
 
-    getAuthorById(book.authorId, (err, author) => {
-        if (err) {
-            return console.log(err.message);
-        }
+//     getAuthorById(book.authorId, (err, author) => {
+//         if (err) {
+//             return console.log(err.message);
+//         }
 
-        console.log(`This book ${book.title} was written by ${author.name}`)
-    })
+//         console.log(`This book ${book.title} was written by ${author.name}`)
+//     })
 
-    return console.log(book)
-})
+//     return console.log(book)
+// })
+
+/**PROMISES*/
+
+// function executor(resolve, reject){
+//    // si funciona
+//    resolve();
+//    // si falla
+//    reject();
+// }
+
+// const propise = new Promise(executor);
+
