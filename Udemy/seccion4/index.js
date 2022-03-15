@@ -41,30 +41,30 @@ const authorDb = [
 ]
 
 
-function getBookById(id, callback) {
-    const book = booksDb.find(b => b.id === id)
+// function getBookById(id, callback) {
+//     const book = booksDb.find(b => b.id === id)
 
-    if (!book) {
-        const err = new Error();
-        err.message = "Book not found"
-        return callback(err)
-    }
+//     if (!book) {
+//         const err = new Error();
+//         err.message = "Book not found"
+//         return callback(err)
+//     }
 
-    callback(null, book)
-}
+//     callback(null, book)
+// }
 
-/**CALLBACK HELL*/
-function getAuthorById(id, callback) {
-    const author = authorDb.find(a => a.id === id)
+// /**CALLBACK HELL*/
+// function getAuthorById(id, callback) {
+//     const author = authorDb.find(a => a.id === id)
 
-    if (!author) {
-        const err = new Error();
-        err.message = "Author not found"
-        return callback(err)
-    }
+//     if (!author) {
+//         const err = new Error();
+//         err.message = "Author not found"
+//         return callback(err)
+//     }
 
-    callback(null, author)
-}
+//     callback(null, author)
+// }
 
 // getBookById(1, (err, book) => {
 //     if (err) {
@@ -93,3 +93,40 @@ function getAuthorById(id, callback) {
 
 // const propise = new Promise(executor);
 
+/**PROMISES*/
+
+function getBookById(id) {
+    return new Promise((resolve, reject) => {
+        const book = booksDb.find(b => b.id === id)
+
+        if (!book) {
+            const err = new Error();
+            err.message = "Book not found"
+            reject(err)
+        }
+        resolve(book)
+    })
+}
+
+
+function getAuthorById(id) {
+
+    return new Promise((resolve, reject) => {
+        const author = authorDb.find(a => a.id === id)
+        if (!author) {
+            const err = new Error();
+            err.message = "Author not found"
+            reject(err)
+        }
+        resolve(author)
+    })
+}
+
+getBookById(1)
+    .then((book) => {
+        return getAuthorById(book.id);
+    }).then((author) => {
+        console.log(author);
+    }).catch(error => {
+        console.error(error)
+    })
