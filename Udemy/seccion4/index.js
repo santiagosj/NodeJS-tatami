@@ -95,38 +95,74 @@ const authorDb = [
 
 /**PROMISES*/
 
-function getBookById(id) {
-    return new Promise((resolve, reject) => {
-        const book = booksDb.find(b => b.id === id)
+// function getBookById(id) {
+//     return new Promise((resolve, reject) => {
+//         const book = booksDb.find(b => b.id === id)
 
-        if (!book) {
-            const err = new Error();
-            err.message = "Book not found"
-            reject(err)
-        }
-        resolve(book)
-    })
+//         if (!book) {
+//             const err = new Error();
+//             err.message = "Book not found"
+//             reject(err)
+//         }
+//         resolve(book)
+//     })
+// }
+
+
+// function getAuthorById(id) {
+
+//     return new Promise((resolve, reject) => {
+//         const author = authorDb.find(a => a.id === id)
+//         if (!author) {
+//             const err = new Error();
+//             err.message = "Author not found"
+//             reject(err)
+//         }
+//         resolve(author)
+//     })
+// }
+
+// getBookById(1)
+//     .then((book) => {
+//         return getAuthorById(book.id);
+//     }).then((author) => {
+//         console.log(author);
+//     }).catch(error => {
+//         console.error(error)
+//     })
+
+/**
+ * 
+ *La expresión await provoca que la ejecución de una función async sea pausada hasta que una Promise sea terminada o rechazada, y regresa a la ejecución de la función async después del término. Al regreso de la ejecución, el valor de la expresión await es la regresada por una promesa terminada.
+ */
+
+async function getBookById(id) {
+    const book = booksDb.find(book => book.id === id);
+    if (!book) {
+        const error = new Error();
+        error.message = "Book not found!"
+        throw error;
+    }
+    return book;
+}
+async function getAuthorById(id) {
+    const author = authorDb.find(author => author.id === id);
+    if (!author) {
+        const error = new Error();
+        error.message = "Author not found!";
+        throw error;
+    }
+    return author;
+}
+async function main(id) {
+    try {
+        const book = await getBookById(id);
+        const author = await getAuthorById(book.authorId);
+        console.log(`This book ${book.title} was written by ${author.name}`);
+    } catch (err) {
+        console.log(err.message)
+    }
 }
 
-
-function getAuthorById(id) {
-
-    return new Promise((resolve, reject) => {
-        const author = authorDb.find(a => a.id === id)
-        if (!author) {
-            const err = new Error();
-            err.message = "Author not found"
-            reject(err)
-        }
-        resolve(author)
-    })
-}
-
-getBookById(1)
-    .then((book) => {
-        return getAuthorById(book.id);
-    }).then((author) => {
-        console.log(author);
-    }).catch(error => {
-        console.error(error)
-    })
+main(1);
+main(5);
