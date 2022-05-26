@@ -4,10 +4,10 @@ function render(file, res) {
     return res.sendFile(path.join(__dirname + `/../views/${file}.html`))
 }
 
-class HomeController {
+class AboutController {
     async index(req, res) {
-        return render("home", res);
+        return render("about", res)
     }
 }
 
-module.exports = new HomeController();
+module.exports = new AboutController();
