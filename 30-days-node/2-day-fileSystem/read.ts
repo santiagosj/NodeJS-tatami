@@ -1,7 +1,7 @@
-const fs = require('fs');
+import fs from 'fs';
 
 // async
-fs.readFile('./textFile.txt', (err: any, data: string) => {
+fs.readFile('./textFile.txt', (err, data) => {
     if (err) throw err;
     console.log("Async content: " + data);
 })
@@ -9,5 +9,3 @@ fs.readFile('./textFile.txt', (err: any, data: string) => {
 //sync 
 const content = fs.readFileSync('./textFile.txt');
 console.log("Sync content: " + content);
-
-export { }

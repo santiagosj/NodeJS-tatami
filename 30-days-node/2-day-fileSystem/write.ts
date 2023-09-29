@@ -1,7 +1,8 @@
-const fs = require("fs");
+import fs from "fs";
 
-let contentAsync = "so.. fuck this world...";
-let contentSync = "fuck everthing that you stand for...";
+let contentAsync = "fuck everthing that you stand for...\n";
+let contentSync = "so.. fuck this world...\n";
+
 // async
 fs.writeFile("./textFile.txt", contentAsync, (err: any) => {
     if (err) throw err;

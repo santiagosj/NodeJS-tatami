@@ -1,13 +1,17 @@
 "use strict";
-const fs = require("fs");
-let contentAsync = "so.. fuck this world...";
-let contentSync = "fuck everthing that you stand for...";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = __importDefault(require("fs"));
+let contentAsync = "fuck everthing that you stand for...\n";
+let contentSync = "so.. fuck this world...\n";
 // async
-fs.writeFile("./textFile.txt", contentAsync, (err) => {
+fs_1.default.writeFile("./textFile.txt", contentAsync, (err) => {
     if (err)
         throw err;
     console.log('It\'s Saved!');
 });
 // sync
-fs.writeFileSync("./textFile.txt", contentSync);
+fs_1.default.writeFileSync("./textFile.txt", contentSync);
 console.log("File sync written!");
